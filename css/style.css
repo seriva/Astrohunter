@@ -1,0 +1,22 @@
+@font-face { 
+	font-family: "GameFont"; 
+	src: url("../font/font.ttf");
+};
+
+html, body {
+	padding:0; 
+	margin:0; 
+	height:"100%"; 
+	width:"100%";'
+}
+
+#canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+	width:"1024px";
+	height:"768px";
+}
+
