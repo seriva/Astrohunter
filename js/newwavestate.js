@@ -22,7 +22,7 @@ NewWaveState.prototype.Update = function() {
 
 NewWaveState.prototype.Draw = function() {
 	var self = this;
-	self.game.canvas.DrawRect(150, 250,725, 250, '#000000', '#ffffff', "3");
-	self.game.canvas.DrawText("new wave in", 512, 360, 50, "center");				
-	self.game.canvas.DrawText("" + self.countDown, 512, 440, 50, "center");			
+	self.game.canvas.DrawRect(88, 216 ,725 , 250, '#000000', '#ffffff', "3");
+	self.game.canvas.DrawText("new wave in",  450, 326, 50, "center");				
+	self.game.canvas.DrawText("" + self.countDown, 450, 406, 50, "center");			
 };

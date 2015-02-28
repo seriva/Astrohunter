@@ -36,9 +36,9 @@ StartState.prototype.Draw = function() {
 	Object.keys(self.asteroids).forEach(function (key) { 
 		 self.asteroids[key].Draw(self.game.canvas);
 	});	
-	self.game.canvas.DrawRect(150, 250,725, 250, '#000000', '#ffffff', "3");
-	self.game.canvas.DrawText("asteroids", 512, 375, 90, "center");
+	self.game.canvas.DrawRect(88, 216,725, 250, '#000000', '#ffffff', "3");
+	self.game.canvas.DrawText("asteroids", 450, 341, 90, "center");
 	if (self.showPressSpace){
-		self.game.canvas.DrawText("press space to start game", 512, 450, 20, "center");
+		self.game.canvas.DrawText("press space to start game", 450, 416, 20, "center");
 	}			
 };

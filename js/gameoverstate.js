@@ -18,10 +18,10 @@ GameOverState.prototype.Update = function() {
 
 GameOverState.prototype.Draw = function() {
 	var self = this;
-	self.game.canvas.DrawRect(150, 250,725, 250, '#000000', '#ffffff', "3");
-	self.game.canvas.DrawText("game over!", 512, 350, 70, "center");
-	self.game.canvas.DrawText("your score is " + self.game.score, 512, 415, 20, "center");	
+	self.game.canvas.DrawRect(88, 216,725, 250, '#000000', '#ffffff', "3");
+	self.game.canvas.DrawText("game over!", 450, 316, 70, "center");
+	self.game.canvas.DrawText("your score is " + self.game.score, 450, 381, 20, "center");	
 	if (self.showPressSpace){
-		self.game.canvas.DrawText("press space to continue", 512, 470, 20, "center");				
+		self.game.canvas.DrawText("press space to continue", 450, 436, 20, "center");				
 	}			
 };	

@@ -1,6 +1,6 @@
 Constants = {
-	SCR_WIDTH : 1024,
-	SCR_HEIGHT : 768,	
+	SCR_WIDTH : 900,
+	SCR_HEIGHT : 700,	
 
 	SHIPS : 3,
 
