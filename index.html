@@ -2,10 +2,10 @@
 <html>
 <head>
 	<title>Asteroids</title>
-	
+
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="css/style.css">
-	
+
 	<!-- Scripts -->
 	<script type="text/javascript" src="js/input.js"></script>
 	<script type="text/javascript" src="js/canvas.js"></script>
@@ -21,15 +21,23 @@
 	<script type="text/javascript" src="js/gamestate.js"></script>
 	<script type="text/javascript" src="js/gameoverstate.js"></script>
 	<script type="text/javascript" src="js/newwavestate.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>	
+    <script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
 	<canvas id="canvas" ></canvas>
-	
+
 	<script>
+		// disable scrolling by any of the keys.
+		window.addEventListener("keydown", function(e) {
+					// space and arrow keys
+					if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+							e.preventDefault();
+					}
+		}, false);
+	
 		// create, initiate and run game
 		var game = new Game();
 		game.Run();
-	</script>	
+	</script>
 </body>
 </html>
