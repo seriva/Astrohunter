@@ -6,7 +6,6 @@ var Canvas = function(id, width, height){
 };
 
 Canvas.prototype.Resize = function() {
-	console.log("resize");
     var widthToHeight = 16 / 9;
     var newWidth = window.innerWidth;
     var newHeight = window.innerHeight;

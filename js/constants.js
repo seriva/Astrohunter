@@ -4,7 +4,7 @@ Constants = {
 
 	SHIPS : 3,
 
-	WAVE_START : 3,
+	WAVE_START : 2,
 	WAVE_INC : 2,
 
 	SHIP_RADIUS : 14,
@@ -43,5 +43,13 @@ Constants = {
 			POINTCOUNT   : 15,
 			POINTS		 : 250
 		}
-	]
-}
+	],
+
+  START_TEXT : "hit space to start game",
+	CONTINUE_TEXT : "hit space to continue"
+};
+
+if (window.mobileAndTabletcheck()){
+	Constants.START_TEXT = "tap to start game";
+	Constants.CONTINUE_TEXT = "tap to continue";
+};

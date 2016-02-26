@@ -24,5 +24,5 @@ NewWaveState.prototype.Draw = function() {
 	var self = this;
 	self.game.canvas.DrawRect(88, 116 ,725 , 250, '#000000', '#ffffff', "3");
 	self.game.canvas.DrawText("new wave in",  450, 226, 50, "center");
-	self.game.canvas.DrawText("" + self.countDown, 450, 306, 50, "center");			
+	self.game.canvas.DrawText("" + self.countDown, 450, 310, 50, "center");			
 };

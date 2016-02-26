@@ -15,11 +15,19 @@ var StartState = function(game){
 	}
 
 	this.showPressSpace = true;
-	this.showPressSpaceTimer = setInterval(function(){ self.showPressSpace = !self.showPressSpace;},750);
-	this.game.input.AddKeyDownEvent(32, function(){
+	this.showPressSpaceTimer = setInterval(function(){ self.showPressSpace = !self.showPressSpace;},800);
+
+	var continueGame = function(){
 		clearInterval(self.showPressSpace);
 		self.game.SetState(States.GAME);
-	});
+		if (window.mobileAndTabletcheck()){
+			self.game.canvas.element.removeEventListener('ontouchend', continueGame, false);
+		}
+	}
+	self.game.input.AddKeyDownEvent(32,continueGame);
+	if (window.mobileAndTabletcheck()){
+		self.game.canvas.element.addEventListener("ontouchend", continueGame, false);
+	}
 };
 StartState.prototype = new State();
 
@@ -39,6 +47,6 @@ StartState.prototype.Draw = function() {
 	self.game.canvas.DrawRect(88, 116,725, 250, '#000000', '#ffffff', "3");
 	self.game.canvas.DrawText("asteroids", 450, 241, 90, "center");
 	if (self.showPressSpace){
-		self.game.canvas.DrawText("press space to start game", 450, 316, 20, "center");
+		self.game.canvas.DrawText(Constants.START_TEXT, 450, 320, 40, "center");
 	}
 };
