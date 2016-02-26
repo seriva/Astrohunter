@@ -7,7 +7,7 @@ var Canvas = function(id, width, height){
 
 Canvas.prototype.Resize = function() {
 	console.log("resize");
-    var widthToHeight = 4 / 3;
+    var widthToHeight = 16 / 10;
     var newWidth = window.innerWidth;
     var newHeight = window.innerHeight;
     var newWidthToHeight = newWidth / newHeight;
