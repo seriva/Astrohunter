@@ -17,16 +17,17 @@ var StartState = function(game){
 	this.showPressSpace = true;
 	this.showPressSpaceTimer = setInterval(function(){ self.showPressSpace = !self.showPressSpace;},800);
 
-	var continueGame = function(){
+	var continueGame = function(e){
 		clearInterval(self.showPressSpace);
 		self.game.SetState(States.GAME);
 		if (window.mobileAndTabletcheck()){
-			self.game.canvas.element.removeEventListener('ontouchend', continueGame, false);
+			self.game.canvas.element.removeEventListener('touchend', continueGame, false);
+			e.preventDefault();
 		}
 	}
 	self.game.input.AddKeyDownEvent(32,continueGame);
 	if (window.mobileAndTabletcheck()){
-		self.game.canvas.element.addEventListener("ontouchend", continueGame, false);
+		self.game.canvas.element.addEventListener("touchend", continueGame, false);
 	}
 };
 StartState.prototype = new State();
