@@ -2,20 +2,22 @@ var GameOverState = function(game){
 	var self = this;
 	State.call(this, game);
 	this.game.input.ClearInputEvents();
+	this.game.ShowControlButtons(false);
 
 	this.showPressSpace = true;
 	this.showPressSpaceTimer = setInterval(function(){ self.showPressSpace = !self.showPressSpace;},800);
 
-	var continueGame = function(){
+	var continueGame = function(e){
 		clearInterval(self.showPressSpace);
 		self.game.SetState(States.START);
 		if (window.mobileAndTabletcheck()){
-			self.game.canvas.element.removeEventListener('ontouchend', continueGame, false);
+			self.game.canvas.element.removeEventListener('touchend', continueGame, false);
+			e.preventDefault();
 		}
 	}
-	this.game.input.AddKeyDownEvent(32,continueGame);
+	self.game.input.AddKeyDownEvent(32,continueGame);
 	if (window.mobileAndTabletcheck()){
-		self.game.canvas.element.addEventListener("ontouchend", continueGame, false);
+		self.game.canvas.element.addEventListener("touchend", continueGame, false);
 	}
 };
 GameOverState.prototype = new State();

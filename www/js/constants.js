@@ -1,13 +1,14 @@
 Constants = {
 	SCR_WIDTH : 900,
 	SCR_HEIGHT : 506,
+	MOB_BUTTON_SIZE : 100,
 
 	SHIPS : 3,
 
-	WAVE_START : 2,
+	WAVE_START : 1,
 	WAVE_INC : 2,
 
-	SHIP_RADIUS : 14,
+	SHIP_RADIUS : 15,
 	SHIP_ROTATIONSPEED : 0.25,
 	SHIP_ACCELERATION : 0.010,
 	SHIP_MAXVELOCITY : 5.0,
@@ -23,25 +24,25 @@ Constants = {
 
 	ASTEROID : [
 		{
-			RADIUS 		 : 40,
+			RADIUS 		   : 40,
+			ACCELERATION : 0.03,
+			HITS   		   : 8,
+			POINTCOUNT   : 15,
+			POINTS		   : 1000
+		},
+		{
+			RADIUS 		   : 25,
 			ACCELERATION : 0.05,
-			HITS   		 : 8,
+			HITS   		   : 4,
 			POINTCOUNT   : 15,
-			POINTS		 : 1000
+			POINTS		   : 500
 		},
 		{
-			RADIUS 		 : 25,
-			ACCELERATION : 0.08,
-			HITS   		 : 4,
+			RADIUS 		   : 15,
+			ACCELERATION : 0.07,
+			HITS   		   : 2,
 			POINTCOUNT   : 15,
-			POINTS		 : 500
-		},
-		{
-			RADIUS 		 : 15,
-			ACCELERATION : 0.10,
-			HITS   		 : 2,
-			POINTCOUNT   : 15,
-			POINTS		 : 250
+			POINTS		   : 250
 		}
 	],
 

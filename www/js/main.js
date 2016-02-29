@@ -7,10 +7,40 @@ var States = {
 
 var Game = function(){
 		var self = this
+
+		//create canvas
 		this.canvas = new Canvas("canvas", Constants.SCR_WIDTH, Constants.SCR_HEIGHT);
 		this.canvas.Resize();
-		window.addEventListener('resize', function(){self.canvas.Resize()}, false);
-		window.addEventListener('orientationchange', function(){self.canvas.Resize()}, false);
+
+		//Set buttons on mobile.
+		this.forward = document.getElementById('forward');
+		this.left = document.getElementById('left');
+		this.right = document.getElementById('right');
+		this.fire = document.getElementById('fire');
+		function PlaceAndSizeButtons(){
+				if (window.mobileAndTabletcheck()){
+					function setButtons(button, size, x, y){
+						button.style.left = Math.round(x) + 'px';
+						button.style.top = Math.round(y) + 'px';
+						button.style.height = Math.round(size) + 'px';
+						button.style.width = Math.round(size) + 'px';
+						button.style.borderRadius = Math.round(size / 2) + 'px';
+					}
+				  var left = self.canvas.element.offsetLeft;
+					var top = self.canvas.element.offsetTop;
+					var height = self.canvas.element.clientHeight;
+					var width = self.canvas.element.clientWidth;
+					var size = Math.round(Constants.MOB_BUTTON_SIZE * width / Constants.SCR_WIDTH);
+					setButtons(this.left, size, left + 5, top+(height-(2*size)) - 10);
+					setButtons(this.right, size, left+size + 5, top+(height-size) - 10);
+					setButtons(this.forward, size, left + (width - (size + 10)), top+(height-(2*size)) - 10);
+					setButtons(this.fire, size,  left + (width - ((size*2) + 10)), top+(height-size) - 10);
+				}
+		}
+		PlaceAndSizeButtons();
+
+		//Other vars and events
+		window.addEventListener('resize', function(){self.canvas.Resize();PlaceAndSizeButtons();}, false);
 		this.input = new Input();
 		this.time;
 		this.currentState = null;
@@ -62,6 +92,21 @@ Game.prototype.SetState = function(state){
 		case States.GAME:
 			this.currentState = new GameState(this);
 			break;
+	}
+};
+
+Game.prototype.ShowControlButtons = function(visible){
+	if (!window.mobileAndTabletcheck()) return;
+	if (visible){
+		this.forward.style.visibility = "visible";
+		this.left.style.visibility = "visible";
+		this.right.style.visibility = "visible";
+		this.fire.style.visibility = "visible";
+	}	else {
+		this.forward.style.visibility = "hidden";
+		this.left.style.visibility = "hidden";
+		this.right.style.visibility = "hidden";
+		this.fire.style.visibility = "hidden";
 	}
 };
 

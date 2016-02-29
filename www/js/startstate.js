@@ -6,9 +6,10 @@ var StartState = function(game){
 	this.game.score = 0;
 	this.game.ships = Constants.SHIPS;
 	this.game.asteroidCount = Constants.WAVE_START;
+	this.game.ShowControlButtons(false);
 
 	this.asteroids = {};
-	for (var i = 0; i < 25; i++) {
+	for (var i = 0; i < 20; i++) {
 		var dir = new Vector(0, 1);
 		dir.Rotate(Math.random()*360);
 		this.asteroids[i] = new Asteroid(i, Math.floor((Math.random() * 3)), Math.random() * Constants.SCR_WIDTH , Math.random() * Constants.SCR_HEIGHT, dir.x, dir.y );

@@ -2,6 +2,7 @@ var GameState = function(game){
 	State.call(this, game);
 	var self = this;
 	this.game.input.ClearInputEvents();
+	this.game.ShowControlButtons(true);
 
 	// Vars.
 	this.ship = new Ship("ship", Constants.SCR_WIDTH / 2, Constants.SCR_HEIGHT / 2)
@@ -24,8 +25,8 @@ var GameState = function(game){
 		this.asteroidCounter++;
 	}
 
-	// Input events
-	this.game.input.AddKeyDownEvent(32, function(){
+  // fire functions
+	var startFire = function(e) {
 		if (self.fireTimer === 0){
 			var selfFire = self;
 			function FireBullet(){
@@ -44,11 +45,51 @@ var GameState = function(game){
 					}, Constants.BULLET_FIRESPEED);
 			FireBullet();
 		}
-	});
-	this.game.input.AddKeyUpEvent(32, function(){
+		if (window.mobileAndTabletcheck()){
+			e.preventDefault();
+		}
+	}
+	var endFire = function(e) {
 		clearInterval(self.fireTimer);
 		self.fireTimer = 0;
-	});
+		if (window.mobileAndTabletcheck()){
+			e.preventDefault();
+		}
+	}
+
+	//touch Input
+	if (window.mobileAndTabletcheck()){
+		self.game.left.addEventListener("touchstart", function(e){
+			self.ship.rotateLeft = true;
+			e.preventDefault();
+		}, false);
+		self.game.left.addEventListener("touchend", function(e){
+			self.ship.rotateLeft = false;
+			e.preventDefault();
+		}, false);
+		self.game.right.addEventListener("touchstart", function(e){
+			self.ship.rotateRight = true;
+			e.preventDefault();
+		}, false);
+		self.game.right.addEventListener("touchend", function(e){
+			self.ship.rotateRight = false;
+			e.preventDefault();
+		}, false);
+		self.game.forward.addEventListener("touchstart", function(e){
+			self.ship.moveForward = true;
+			e.preventDefault();
+		}, false);
+		self.game.forward.addEventListener("touchend", function(e){
+			self.ship.moveForward = false;
+			e.preventDefault();
+		}, false);
+		self.game.fire.addEventListener("touchstart", startFire, false);
+		self.game.fire.addEventListener("touchend", endFire, false);
+	}
+
+	// Key input events
+	this.game.input.AddKeyDownEvent(32, startFire);
+	this.game.input.AddKeyUpEvent(32, endFire);
 	this.game.input.AddKeyDownEvent(80, function(){
 		self.pause = !self.pause;
 	});
@@ -95,8 +136,8 @@ GameState.prototype.Draw = function() {
 		 self.explosions[key].Draw(self.game.canvas);
 	});
 
-	self.game.canvas.DrawText("score : " + self.game.score, 10, 35, 25, "left");
-	self.game.canvas.DrawText("ships : " + self.game.ships, 10, 70, 25, "left");	
+	self.game.canvas.DrawText("score : " + self.game.score, 10, 35, 30, "left");
+	self.game.canvas.DrawText("ships : " + self.game.ships, 10, 70, 30, "left");
 	if(self.pause){
 		self.game.canvas.DrawRect(150, 250,725, 250, '#000000', '#ffffff', "3");
 		self.game.canvas.DrawText("pause", 512, 400, 50, "center");

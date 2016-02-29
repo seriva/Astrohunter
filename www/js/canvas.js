@@ -12,11 +12,11 @@ Canvas.prototype.Resize = function() {
     var newWidthToHeight = newWidth / newHeight;
 
     if (newWidthToHeight > widthToHeight) {
-        newWidth = newHeight * widthToHeight;
+        newWidth = Math.round(newHeight * widthToHeight);
         this.element.style.height = newHeight + 'px';
         this.element.style.width = newWidth + 'px';
     } else {
-        newHeight = newWidth / widthToHeight;
+        newHeight = Math.round(newWidth / widthToHeight);
         this.element.style.width = newWidth + 'px';
         this.element.style.height = newHeight + 'px';
     }
@@ -24,7 +24,6 @@ Canvas.prototype.Resize = function() {
     this.element.style.marginTop = (-newHeight / 2) + 'px';
     this.element.style.marginLeft = (-newWidth / 2) + 'px';
 }
-
 
 Canvas.prototype.DrawText = function(t,  x, y, s, a){
 	this.context.fillStyle = '#ffffff';
