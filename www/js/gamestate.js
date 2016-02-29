@@ -139,8 +139,8 @@ GameState.prototype.Draw = function() {
 	self.game.canvas.DrawText("score : " + self.game.score, 10, 35, 30, "left");
 	self.game.canvas.DrawText("ships : " + self.game.ships, 10, 70, 30, "left");
 	if(self.pause){
-		self.game.canvas.DrawRect(150, 250,725, 250, '#000000', '#ffffff', "3");
-		self.game.canvas.DrawText("pause", 512, 400, 50, "center");
+		self.game.canvas.DrawRect(88, 116,725, 250, '#000000', '#ffffff', "3");
+		self.game.canvas.DrawText("pause", 450, 280, 90, "center");
 	}
 };
 
