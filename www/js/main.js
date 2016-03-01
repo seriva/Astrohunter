@@ -63,14 +63,14 @@ var Game = function(){
 		if (window.mobileAndTabletcheck()){
 			document.addEventListener("resume", function(){
 				music.play();
-				if (this.state == States.START) {
-						currentState.pause = false;
+				if (self.state == States.GAME) {
+						self.currentState.pause = false;
 				}
 			}, false);
 			document.addEventListener("pause", function(){
 				music.pause();
-				if (this.state == States.START) {
-						currentState.pause = true;
+				if (self.state == States.GAME) {
+						self.currentState.pause = true;
 				}
 			}, false);
 		}
