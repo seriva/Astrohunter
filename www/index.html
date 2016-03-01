@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="css/style.css">
 
 	<!-- Scripts -->
+  <script src="cordova.js"></script>
   <script type="text/javascript" src="js/utils.js"></script>
   <script type="text/javascript" src="js/sound.js"></script>
 	<script type="text/javascript" src="js/input.js"></script>
@@ -27,7 +28,7 @@
 	<script type="text/javascript" src="js/newwavestate.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </head>
-<body bgcolor="#000000">
+<body bgcolor="#000000" onload="onLoad()">
 	<canvas id="canvas" ></canvas>
 	<div id="forward" class='button forward'> </div>
 	<div id="left" class='button left'> </div>

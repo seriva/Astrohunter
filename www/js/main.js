@@ -43,11 +43,12 @@ var Game = function(){
 
 		//Sounds
 		this.sound = new Sound();
-		this.sound.PlayMusic('sounds/music.ogg', 1, 0.75, true)
+		var music = this.sound.PlayMusic('sounds/music.ogg', 1, 0.75, true)
 		this.sound.CacheSound('fire', 'sounds/fire.ogg', 1, 0.2, true)
 		this.sound.CacheSound('explosion', 'sounds/explosion.ogg', 1, 0.5, true)
 
 		//Vars
+		this.state = States.START;
 		this.time;
 		this.currentState = null;
 		this.frameTime = 0;
@@ -57,6 +58,22 @@ var Game = function(){
 
 		// Set the start state
 		this.SetState(States.START);
+
+		//Pause game on phone
+		if (window.mobileAndTabletcheck()){
+			document.addEventListener("resume", function(){
+				music.play();
+				if (this.state == States.START) {
+						currentState.pause = false;
+				}
+			}, false);
+			document.addEventListener("pause", function(){
+				music.pause();
+				if (this.state == States.START) {
+						currentState.pause = true;
+				}
+			}, false);
+		}
 };
 
 Game.prototype.Run = function() {
@@ -85,6 +102,7 @@ Game.prototype.Run = function() {
 };
 
 Game.prototype.SetState = function(state){
+	this.state = state;
 	delete this.currentState;
 	switch(state) {
 		case States.START:

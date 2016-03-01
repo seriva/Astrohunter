@@ -36,4 +36,5 @@ Sound.prototype.PlayMusic = function(file, speed, volume, loop){
 	var sound = this.LoadSound(file, speed, volume);
 	sound.loop = loop;
 	sound.play();
+	return sound;
 };
