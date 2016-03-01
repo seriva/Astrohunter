@@ -25,8 +25,8 @@ var GameState = function(game){
 		this.asteroidCounter++;
 	}
 
-  // fire functions
-	var startFire = function(e) {
+   // fire functions
+	 var startFire = function(e) {
 		if (self.fireTimer === 0){
 			var selfFire = self;
 			function FireBullet(){
@@ -39,6 +39,7 @@ var GameState = function(game){
 					delete selfFire.bullets[this.id];
 				};
 				selfFire.bulletCounter++;
+				selfFire.game.sound.PlaySound('fire');
 			}
 			self.fireTimer = setInterval(function(){
 						FireBullet();
@@ -46,6 +47,7 @@ var GameState = function(game){
 			FireBullet();
 		}
 		if (window.mobileAndTabletcheck()){
+			self.game.fire.style.opacity = 0.6;
 			e.preventDefault();
 		}
 	}
@@ -53,6 +55,7 @@ var GameState = function(game){
 		clearInterval(self.fireTimer);
 		self.fireTimer = 0;
 		if (window.mobileAndTabletcheck()){
+			self.game.fire.style.opacity = 0.2;
 			e.preventDefault();
 		}
 	}
@@ -61,26 +64,32 @@ var GameState = function(game){
 	if (window.mobileAndTabletcheck()){
 		self.game.left.addEventListener("touchstart", function(e){
 			self.ship.rotateLeft = true;
+			self.game.left.style.opacity = 0.6;
 			e.preventDefault();
 		}, false);
 		self.game.left.addEventListener("touchend", function(e){
 			self.ship.rotateLeft = false;
+			self.game.left.style.opacity=0.2;
 			e.preventDefault();
 		}, false);
 		self.game.right.addEventListener("touchstart", function(e){
 			self.ship.rotateRight = true;
+			self.game.right.style.opacity = 0.6;
 			e.preventDefault();
 		}, false);
 		self.game.right.addEventListener("touchend", function(e){
 			self.ship.rotateRight = false;
+			self.game.right.style.opacity = 0.2;
 			e.preventDefault();
 		}, false);
 		self.game.forward.addEventListener("touchstart", function(e){
 			self.ship.moveForward = true;
+			self.game.forward.style.opacity = 0.6;
 			e.preventDefault();
 		}, false);
 		self.game.forward.addEventListener("touchend", function(e){
 			self.ship.moveForward = false;
+			self.game.forward.style.opacity = 0.2;
 			e.preventDefault();
 		}, false);
 		self.game.fire.addEventListener("touchstart", startFire, false);
@@ -95,6 +104,20 @@ var GameState = function(game){
 	});
 };
 GameState.prototype = new State( );
+
+GameState.prototype.RemoveEvents = function(){
+	clearInterval(this.fireTimer);
+	if (window.mobileAndTabletcheck()){
+		this.game.left.removeEventListener("touchstart");
+		this.game.left.removeEventListener("touchend");
+		this.game.right.removeEventListener("touchstart");
+		this.game.right.removeEventListener("touchend");
+		this.game.forward.removeEventListener("touchstart");
+		this.game.forward.removeEventListener("touchend");
+	  this.game.fire.removeEventListener("touchstart");
+	  this.game.fire.removeEventListener("touchend");
+	}
+}
 
 GameState.prototype.Update = function() {
 	var self = this;
@@ -153,6 +176,7 @@ GameState.prototype.DoShipAsteroidColision = function(){
 		if (self.ship.IsColliding(a)){
 			// Explosion
 			self.CreateExplosion(self.ship.pos.x, self.ship.pos.y, 75, 300)
+			self.game.sound.PlaySound('explosion');
 
 			// Break up asteroid
 			self.BreakupAsteroid(a);
@@ -160,6 +184,7 @@ GameState.prototype.DoShipAsteroidColision = function(){
 			// Check game over
 			self.game.ships--;
 			if  (self.game.ships === 0){
+				self.RemoveEvents();
 				self.game.SetState(States.GAMEOVER);
 				return;
 			}
@@ -204,6 +229,7 @@ GameState.prototype.BreakupAsteroid = function(a){
 
 	// Explosion
 	self.CreateExplosion(a.pos.x, a.pos.y, (3-a.type)*50, (3-a.type)*120)
+	self.game.sound.PlaySound('explosion');
 
 	// Calculate new type and score
 	self.game.score = self.game.score + Constants.ASTEROID[a.type].POINTS;
@@ -215,6 +241,7 @@ GameState.prototype.BreakupAsteroid = function(a){
 	if (type > 2) {
 		// Start next wave if there are no more asteroids
 		if (Object.keys(self.asteroids).length === 0){
+			self.RemoveEvents();
 			self.game.SetState(States.NEWWAVE);
 		}
 		return;

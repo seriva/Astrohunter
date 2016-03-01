@@ -13,7 +13,6 @@ var NewWaveState = function(game){
 			self.game.SetState(States.GAME);
 		}
 	},1000);
-
 };
 NewWaveState.prototype = new State();
 

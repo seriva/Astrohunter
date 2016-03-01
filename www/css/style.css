@@ -7,7 +7,7 @@ html, body {
 	padding:0;
 	margin:0;
 	height:"100%";
-	width:"100%";'
+	width:"100%";
 }
 
 #canvas {
@@ -31,5 +31,22 @@ html, body {
 	margin: 0px;
 	border-radius: 25px;
 	visibility: hidden;
-	opacity: 0.4;
+	opacity: 0.2;
+	background-size: cover;
+}
+
+.left {
+	background-image: url("../images/left.png");
+}
+
+.right {
+  background-image: url("../images/right.png");
+}
+
+.forward {
+  background-image: url("../images/forward.png");
+}
+
+.fire {
+  background-image: url("../images/fire.png");
 }

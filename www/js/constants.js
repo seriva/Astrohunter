@@ -6,15 +6,15 @@ Constants = {
 	SHIPS : 3,
 
 	WAVE_START : 1,
-	WAVE_INC : 2,
+	WAVE_INC : 1,
 
 	SHIP_RADIUS : 15,
 	SHIP_ROTATIONSPEED : 0.25,
-	SHIP_ACCELERATION : 0.010,
-	SHIP_MAXVELOCITY : 5.0,
+	SHIP_ACCELERATION : 0.008,
+	SHIP_MAXVELOCITY : 4.0,
 	SHIP_IMMUME : 4.0,
 
-	BULLET_FIRESPEED : 175,
+	BULLET_FIRESPEED : 250,
 	BULLET_RADIUS : 4,
 	BULLET_LIFETIME : 600,
 	BULLET_ACCELERATION : 1.0,
@@ -25,22 +25,22 @@ Constants = {
 	ASTEROID : [
 		{
 			RADIUS 		   : 40,
-			ACCELERATION : 0.03,
-			HITS   		   : 8,
+			ACCELERATION : 0.02,
+			HITS   		   : 7,
 			POINTCOUNT   : 15,
 			POINTS		   : 1000
 		},
 		{
 			RADIUS 		   : 25,
-			ACCELERATION : 0.05,
-			HITS   		   : 4,
+			ACCELERATION : 0.04,
+			HITS   		   : 3,
 			POINTCOUNT   : 15,
 			POINTS		   : 500
 		},
 		{
 			RADIUS 		   : 15,
-			ACCELERATION : 0.07,
-			HITS   		   : 2,
+			ACCELERATION : 0.06,
+			HITS   		   : 1,
 			POINTCOUNT   : 15,
 			POINTS		   : 250
 		}

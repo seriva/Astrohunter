@@ -12,7 +12,8 @@ var Game = function(){
 		this.canvas = new Canvas("canvas", Constants.SCR_WIDTH, Constants.SCR_HEIGHT);
 		this.canvas.Resize();
 
-		//Set buttons on mobile.
+		//Input
+		this.input = new Input();
 		this.forward = document.getElementById('forward');
 		this.left = document.getElementById('left');
 		this.right = document.getElementById('right');
@@ -38,10 +39,15 @@ var Game = function(){
 				}
 		}
 		PlaceAndSizeButtons();
-
-		//Other vars and events
 		window.addEventListener('resize', function(){self.canvas.Resize();PlaceAndSizeButtons();}, false);
-		this.input = new Input();
+
+		//Sounds
+		this.sound = new Sound();
+		this.sound.PlayMusic('sounds/music.ogg', 1, 0.75, true)
+		this.sound.CacheSound('fire', 'sounds/fire.ogg', 1, 0.2, true)
+		this.sound.CacheSound('explosion', 'sounds/explosion.ogg', 1, 0.5, true)
+
+		//Vars
 		this.time;
 		this.currentState = null;
 		this.frameTime = 0;
@@ -79,6 +85,7 @@ Game.prototype.Run = function() {
 };
 
 Game.prototype.SetState = function(state){
+	delete this.currentState;
 	switch(state) {
 		case States.START:
 			this.currentState = new StartState(this);
@@ -97,6 +104,10 @@ Game.prototype.SetState = function(state){
 
 Game.prototype.ShowControlButtons = function(visible){
 	if (!window.mobileAndTabletcheck()) return;
+	this.forward.style.opacity = 0.2;
+	this.left.style.opacity = 0.2;
+	this.right.style.opacity = 0.2;
+	this.fire.style.opacity = 0.2;
 	if (visible){
 		this.forward.style.visibility = "visible";
 		this.left.style.visibility = "visible";

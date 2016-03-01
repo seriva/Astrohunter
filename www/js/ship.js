@@ -55,17 +55,17 @@ Ship.prototype.Draw = function(canvas) {
 
 Ship.prototype.SetPoints = function() {
 	this.shipPoints = [];
-	this.shipPoints.push(new Vector(0, -14));
-	this.shipPoints.push(new Vector(-9, 10));
-	this.shipPoints.push(new Vector(0, 7));
-	this.shipPoints.push(new Vector(9, 10));
-	this.shipPoints.push(new Vector(0, -14));
+	this.shipPoints.push(new Vector(0, -18));
+	this.shipPoints.push(new Vector(-13, 14));
+	this.shipPoints.push(new Vector(0, 11));
+	this.shipPoints.push(new Vector(13, 14));
+	this.shipPoints.push(new Vector(0, -18));
 
 	this.flamePoints = [];
-	this.flamePoints.push(new Vector(-6, 9));
-	this.flamePoints.push(new Vector(0, 7));
-	this.flamePoints.push(new Vector(6, 9));
-	this.flamePoints.push(new Vector(0, 15));
+	this.flamePoints.push(new Vector(-10, 13));
+	this.flamePoints.push(new Vector(0, 11));
+	this.flamePoints.push(new Vector(10, 13));
+	this.flamePoints.push(new Vector(0, 19));
 }
 
 Ship.prototype.ResetShip = function(x, y) {
