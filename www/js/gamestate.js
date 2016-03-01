@@ -175,7 +175,7 @@ GameState.prototype.DoShipAsteroidColision = function(){
 		var a = self.asteroids[key];
 		if (self.ship.IsColliding(a)){
 			// Explosion
-			self.CreateExplosion(self.ship.pos.x, self.ship.pos.y, 75, 300)
+			self.CreateExplosion(self.ship.pos.x, self.ship.pos.y, 75, 300, 100)
 			self.game.sound.PlaySound('explosion');
 
 			// Break up asteroid
@@ -203,7 +203,7 @@ GameState.prototype.DoBulletsAsteroidColision = function(){
 		Object.keys(self.bullets).forEach(function (key) {
 			var b = self.bullets[key];
 			if ( b.IsColliding(a)){
-				self.CreateExplosion(b.pos.x, b.pos.y, 10, 100)
+				self.CreateExplosion(b.pos.x, b.pos.y, 10, 100, 0)
 				delete self.bullets[b.id];
 				a.hits--;
 				if (a.hits < 1){
@@ -214,10 +214,10 @@ GameState.prototype.DoBulletsAsteroidColision = function(){
 	});
 };
 
-GameState.prototype.CreateExplosion = function(x, y, particlecount, lifetime){
+GameState.prototype.CreateExplosion = function(x, y, particlecount, lifetime, vibrate){
 	var self = this;
 	var id = 'Explosion' + this.explosionCounter;
-	self.explosions[id] = new Explosion(id, x, y, particlecount, lifetime);
+	self.explosions[id] = new Explosion(id, x, y, particlecount, lifetime, vibrate);
 	self.explosions[id].OnDestroy = function(){
 		delete self.explosions[id];
 	}
@@ -228,7 +228,7 @@ GameState.prototype.BreakupAsteroid = function(a){
 	var self = this;
 
 	// Explosion
-	self.CreateExplosion(a.pos.x, a.pos.y, (3-a.type)*50, (3-a.type)*120)
+	self.CreateExplosion(a.pos.x, a.pos.y, (3-a.type)*50, (3-a.type)*120, 50)
 	self.game.sound.PlaySound('explosion');
 
 	// Calculate new type and score

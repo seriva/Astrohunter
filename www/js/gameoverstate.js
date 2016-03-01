@@ -7,6 +7,11 @@ var GameOverState = function(game){
 	this.showPressSpace = true;
 	this.showPressSpaceTimer = setInterval(function(){ self.showPressSpace = !self.showPressSpace;},800);
 
+	if (self.game.score > self.game.highscore){
+		self.game.highscore = self.game.score;
+		localStorage.highscore = self.game.highscore;
+	}
+
 	var continueGame = function(e){
 		clearInterval(self.showPressSpace);
 		self.game.SetState(States.START);

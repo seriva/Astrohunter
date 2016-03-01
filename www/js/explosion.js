@@ -1,4 +1,4 @@
-var Explosion = function(id, x, y, particlecount, lifetime){
+var Explosion = function(id, x, y, particlecount, lifetime, vibrate){
 	Entity.call(this, id);
 	this.pos.Set(x, y);
 	this.lifetime = lifetime;
@@ -10,6 +10,10 @@ var Explosion = function(id, x, y, particlecount, lifetime){
 		var dir = new Vector(0, 1*(Math.random()*Constants.EXPLOSION_ACCELERATION));
 		dir.Rotate(Math.random()*360);
 		this.dirs.push(dir);
+	}
+
+	if (window.mobileAndTabletcheck() && (vibrate > 0)){
+		navigator.vibrate(vibrate);
 	}
 };
 Explosion.prototype = new Entity();

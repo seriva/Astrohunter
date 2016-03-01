@@ -56,6 +56,12 @@ var Game = function(){
 		this.ships = Constants.SHIPS;
 		this.asteroidCount = Constants.WAVE_START;
 
+		//Get highscore.
+		this.highscore = localStorage.highscore;
+		if(this.highscore === undefined){
+			this.highscore = 0;
+		}
+
 		// Set the start state
 		this.SetState(States.START);
 

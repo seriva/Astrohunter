@@ -46,9 +46,12 @@ StartState.prototype.Draw = function() {
 	Object.keys(self.asteroids).forEach(function (key) {
 		 self.asteroids[key].Draw(self.game.canvas);
 	});
+	var self = this;
 	self.game.canvas.DrawRect(88, 116,725, 250, '#000000', '#ffffff', "3");
-	self.game.canvas.DrawText("asteroids", 450, 241, 90, "center");
+	self.game.canvas.DrawText("asteroids", 450, 210, 80, "center");
+	self.game.canvas.DrawText("highscore : " + self.game.highscore, 450, 276, 40, "center");
 	if (self.showPressSpace){
-		self.game.canvas.DrawText(Constants.START_TEXT, 450, 320, 40, "center");
+		self.game.canvas.DrawText(Constants.START_TEXT, 450, 342, 40, "center");
 	}
+
 };

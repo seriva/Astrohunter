@@ -44,4 +44,5 @@ Temporary Items
 
 /platforms/**
 /plugins/cordova-plugin-whitelist/**
+/plugins/cordova-plugin-vibration/**
 /plugins/android.json
