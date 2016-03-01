@@ -1,6 +1,6 @@
 var Sound = function(){
 	 this.soundCache = {};
-	 this.cachSize = 8;
+	 this.cachSize = 5;
 };
 
 Sound.prototype.LoadSound = function(file, speed, volume){
@@ -26,7 +26,7 @@ Sound.prototype.PlaySound = function(id){
 		var itr = 0;
 		while(!this.soundCache[id + '_' + itr].paused){
 			itr = itr + 1;
-			if (itr > this.cachSize-1) itr = 0;
+			if (itr > this.cachSize-1) return;
 		}
 		this.soundCache[id + '_' + itr].play();
 	}
