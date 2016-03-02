@@ -2,13 +2,14 @@
 <widget id="com.asteroid" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>AsteroidsJS</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        A simple Asteroid game.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
+    <author email="luukvanvenrooij84@gmail.com" href="http://www.luukvanvenrooij.nl">
         Apache Cordova Team
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="cordova-plugin-vibration" spec="1" />
     <access origin="*" />
     <icon src="resources/icon.png" />
     <allow-intent href="http://*/*" />
