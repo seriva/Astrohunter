@@ -47,7 +47,7 @@ var GameState = function(game){
 			FireBullet();
 		}
 		if (window.mobileAndTabletcheck()){
-			self.game.fire.style.opacity = 0.6;
+			self.game.fire.style.opacity = Constants.BUTTON_PRESSED_OPACITY;
 			e.preventDefault();
 		}
 	}
@@ -55,7 +55,7 @@ var GameState = function(game){
 		clearInterval(self.fireTimer);
 		self.fireTimer = 0;
 		if (window.mobileAndTabletcheck()){
-			self.game.fire.style.opacity = 0.2;
+			self.game.fire.style.opacity = Constants.BUTTON_IDOL_OPACITY;
 			e.preventDefault();
 		}
 	}
@@ -64,32 +64,32 @@ var GameState = function(game){
 	if (window.mobileAndTabletcheck()){
 		self.game.left.addEventListener("touchstart", function(e){
 			self.ship.rotateLeft = true;
-			self.game.left.style.opacity = 0.6;
+			self.game.left.style.opacity = Constants.BUTTON_PRESSED_OPACITY;
 			e.preventDefault();
 		}, false);
 		self.game.left.addEventListener("touchend", function(e){
 			self.ship.rotateLeft = false;
-			self.game.left.style.opacity=0.2;
+			self.game.left.style.opacity=Constants.BUTTON_IDOL_OPACITY;
 			e.preventDefault();
 		}, false);
 		self.game.right.addEventListener("touchstart", function(e){
 			self.ship.rotateRight = true;
-			self.game.right.style.opacity = 0.6;
+			self.game.right.style.opacity = Constants.BUTTON_PRESSED_OPACITY;
 			e.preventDefault();
 		}, false);
 		self.game.right.addEventListener("touchend", function(e){
 			self.ship.rotateRight = false;
-			self.game.right.style.opacity = 0.2;
+			self.game.right.style.opacity = Constants.BUTTON_IDOL_OPACITY;
 			e.preventDefault();
 		}, false);
 		self.game.forward.addEventListener("touchstart", function(e){
 			self.ship.moveForward = true;
-			self.game.forward.style.opacity = 0.6;
+			self.game.forward.style.opacity = Constants.BUTTON_PRESSED_OPACITY;
 			e.preventDefault();
 		}, false);
 		self.game.forward.addEventListener("touchend", function(e){
 			self.ship.moveForward = false;
-			self.game.forward.style.opacity = 0.2;
+			self.game.forward.style.opacity = Constants.BUTTON_IDOL_OPACITY;
 			e.preventDefault();
 		}, false);
 		self.game.fire.addEventListener("touchstart", startFire, false);

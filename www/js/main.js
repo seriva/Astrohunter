@@ -128,10 +128,10 @@ Game.prototype.SetState = function(state){
 
 Game.prototype.ShowControlButtons = function(visible){
 	if (!window.mobileAndTabletcheck()) return;
-	this.forward.style.opacity = 0.2;
-	this.left.style.opacity = 0.2;
-	this.right.style.opacity = 0.2;
-	this.fire.style.opacity = 0.2;
+	this.forward.style.opacity = Constants.BUTTON_IDOL_OPACITY;
+	this.left.style.opacity = Constants.BUTTON_IDOL_OPACITY;
+	this.right.style.opacity = Constants.BUTTON_IDOL_OPACITY;
+	this.fire.style.opacity = Constants.BUTTON_IDOL_OPACITY;
 	if (visible){
 		this.forward.style.visibility = "visible";
 		this.left.style.visibility = "visible";

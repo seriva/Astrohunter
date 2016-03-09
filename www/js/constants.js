@@ -46,8 +46,11 @@ Constants = {
 		}
 	],
 
-  START_TEXT : "hit space to start game",
-	CONTINUE_TEXT : "hit space to continue"
+    START_TEXT : "hit space to start game",
+	CONTINUE_TEXT : "hit space to continue",
+
+	BUTTON_IDOL_OPACITY : 0.4,
+	BUTTON_PRESSED_OPACITY : 0.8
 };
 
 if (window.mobileAndTabletcheck()){
