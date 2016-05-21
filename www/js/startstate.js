@@ -48,7 +48,7 @@ StartState.prototype.Draw = function() {
 	});
 	var self = this;
 	self.game.canvas.DrawRect(88, 116,725, 250, '#000000', '#ffffff', "3");
-	self.game.canvas.DrawText("asteroids", 450, 210, 80, "center");
+	self.game.canvas.DrawText("asteroidsjs", 450, 210, 80, "center");
 	self.game.canvas.DrawText("highscore : " + self.game.highscore, 450, 276, 40, "center");
 	if (self.showPressSpace){
 		self.game.canvas.DrawText(Constants.START_TEXT, 450, 342, 40, "center");
