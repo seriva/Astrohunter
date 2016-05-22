@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.asteroidsjavascript" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.astrohunter" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>AsteroidsJS</name>
     <description>
-        A simple Asteroid game.
+        A simple Asteroids clome with some cool new twists!
     </description>
     <author email="luukvanvenrooij84@gmail.com" href="http://www.luukvanvenrooij.nl">
         Luuk van Venrooij
